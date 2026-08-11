@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monte Carlo Decision Simulator</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f8fafc;
+    --surface: #fff;
+    --text: #1e293b;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --accent: #6366f1;
+    --accent-hover: #4f46e5;
+    --positive: #10b981;
+    --negative: #ef4444;
+    --warning: #f59e0b;
+    --radius: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --text: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --border: #334155;
+      --accent: #818cf8;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+  }
+
+  body {
+    font-family: 'Inter', 'Pretendard', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+  .subtitle { color: var(--text-secondary); margin-bottom: 2rem; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+
+  .card-header {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.375rem; }
+  .form-group label { font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+  .form-group input, .form-group select {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: inherit;
+  }
+  .form-group input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+
+  .scenario-row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 1fr auto;
+    gap: 0.5rem;
+    align-items: end;
+    margin-bottom: 0.75rem;
+  }
+  .scenario-row input {
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: inherit;
+  }
+
+  button {
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary { background: var(--border); color: var(--text); }
+  .btn-secondary:hover { opacity: 0.8; }
+  .btn-danger { background: var(--negative); color: #fff; }
+  .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.75rem; }
+
+  .results { margin-top: 1.5rem; }
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+  .metric {
+    padding: 1rem;
+    background: var(--bg);
+    border-radius: var(--radius);
+    text-align: center;
+  }
+  .metric-value { font-size: 1.5rem; font-weight: 700; }
+  .metric-label { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem; }
+  .metric-value.positive { color: var(--positive); }
+  .metric-value.negative { color: var(--negative); }
+
+  .distribution-bar {
+    display: flex;
+    height: 32px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 1rem 0;
+  }
+  .dist-win { background: var(--positive); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; color: #fff; }
+  .dist-loss { background: var(--negative); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; color: #fff; }
+
+  .premortem { padding: 1rem; background: #fef2f2; border-left: 3px solid var(--negative); border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.9rem; }
+  @media (prefers-color-scheme: dark) { .premortem { background: #450a0a55; } }
+
+  .postmortem { padding: 1rem; background: #ecfdf5; border-left: 3px solid var(--positive); border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.9rem; }
+  @media (prefers-color-scheme: dark) { .postmortem { background: #064e3b55; } }
+
+  .bayesian { padding: 1rem; background: var(--bg); border-radius: var(--radius); margin: 1rem 0; }
+  .bayesian-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; }
+  .bayesian-label { font-weight: 500; }
+  .bayesian-value { font-weight: 700; font-size: 1.1rem; color: var(--accent); }
+
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-secondary); }
+</style>
+</head>
+<body>
+
+<h1>🎲 Monte Carlo Decision Simulator</h1>
+<p class="subtitle">의사결정 과학: 기대값 계산, Bayesian 업데이트, Pre-Mortem 분석 — Cycle 3 Build-to-Understand</p>
+
+<!-- Expected Value Calculator -->
+<div class="card">
+  <div class="card-header">📊 기대값 (Expected Value) 계산기</div>
+  <div id="ev-scenarios">
+    <div class="scenario-row">
+      <input type="text" placeholder="시나리오 이름" value="신제품 출시 성공">
+      <input type="text" placeholder="결과 설명" value="시장 점유율 15% 확보">
+      <input type="number" placeholder="확률(%)" value="40" min="0" max="100" step="0.1">
+      <input type="number" placeholder="가치(₩)" value="500000000" step="1000000">
+      <button class="btn-danger btn-sm" onclick="removeScenario(this)">✕</button>
+    </div>
+    <div class="scenario-row">
+      <input type="text" placeholder="시나리오 이름" value="중간 성과">
+      <input type="text" placeholder="결과 설명" value="시장 점유율 5% 확보">
+      <input type="number" placeholder="확률(%)" value="35" min="0" max="100" step="0.1">
+      <input type="number" placeholder="가치(₩)" value="100000000" step="1000000">
+      <button class="btn-danger btn-sm" onclick="removeScenario(this)">✕</button>
+    </div>
+    <div class="scenario-row">
+      <input type="text" placeholder="시나리오 이름" value="실패">
+      <input type="text" placeholder="결과 설명" value="시장 진입 실패">
+      <input type="number" placeholder="확률(%)" value="25" min="0" max="100" step="0.1">
+      <input type="number" placeholder="가치(₩)" value="-200000000" step="1000000">
+      <button class="btn-danger btn-sm" onclick="removeScenario(this)">✕</button>
+    </div>
+  </div>
+  <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+    <button class="btn-secondary btn-sm" onclick="addScenario()">+ 시나리오 추가</button>
+    <button class="btn-primary" onclick="computeEV()">EV 계산</button>
+  </div>
+  <div id="ev-result" class="results"></div>
+</div>
+
+<!-- Bayesian Updater -->
+<div class="card">
+  <div class="card-header">🧠 Bayesian Belief Updater</div>
+  <p style="color:var(--text-secondary);margin-bottom:1rem;font-size:0.85rem;">
+    P(H|E) = P(E|H) × P(H) / P(E). 새로운 증거를 관찰한 후 가설의 확률을 업데이트합니다.
+  </p>
+  <div class="form-grid">
+    <div class="form-group">
+      <label>사전 확률 P(H) — 가설이 참일 확률</label>
+      <input type="number" id="prior" value="30" min="0" max="100" step="0.1" placeholder="%">
+    </div>
+    <div class="form-group">
+      <label>민감도 P(E|H) — 가설이 참일 때 증거를 관찰할 확률</label>
+      <input type="number" id="sensitivity" value="80" min="0" max="100" step="0.1" placeholder="%">
+    </div>
+    <div class="form-group">
+      <label>위양성률 P(E|¬H) — 가설이 거짓일 때 증거를 관찰할 확률</label>
+      <input type="number" id="false-positive" value="10" min="0" max="100" step="0.1" placeholder="%">
+    </div>
+  </div>
+  <button class="btn-primary" style="margin-top:1rem;" onclick="bayesianUpdate()">업데이트</button>
+  <div id="bayesian-result" class="results"></div>
+</div>
+
+<!-- Monte Carlo Simulator -->
+<div class="card">
+  <div class="card-header">🎰 Monte Carlo 시뮬레이션</div>
+  <div class="form-grid">
+    <div class="form-group">
+      <label>시뮬레이션 횟수</label>
+      <select id="sim-count">
+        <option value="1000">1,000</option>
+        <option value="10000" selected>10,000</option>
+        <option value="100000">100,000</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>연간 기대수익률 (%)</label>
+      <input type="number" id="sim-mean" value="8" step="0.1">
+    </div>
+    <div class="form-group">
+      <label>연간 변동성 (%)</label>
+      <input type="number" id="sim-vol" value="15" step="0.1">
+    </div>
+    <div class="form-group">
+      <label>투자 기간 (년)</label>
+      <input type="number" id="sim-years" value="10" min="1" max="50">
+    </div>
+    <div class="form-group">
+      <label>초기 투자금 (₩)</label>
+      <input type="number" id="sim-capital" value="10000000" step="1000000">
+    </div>
+  </div>
+  <button class="btn-primary" style="margin-top:1rem;" onclick="runMonteCarlo()">시뮬레이션 실행</button>
+  <div id="mc-result" class="results"></div>
+</div>
+
+<!-- Pre-Mortem Generator -->
+<div class="card">
+  <div class="card-header">💀 Pre-Mortem / Post-Mortem 생성기</div>
+  <p style="color:var(--text-secondary);margin-bottom:1rem;font-size:0.85rem;">
+    Pre-Mortem: "1년 후, 이 결정이 완전히 실패했다. 왜 실패했을까?" — 결정을 내리기 전에 미리 부검한다.
+  </p>
+  <div class="form-group" style="max-width:100%;">
+    <label>결정 내용</label>
+    <input type="text" id="pm-decision" placeholder="예: 퇴사하고 창업한다, A 종목에 전재산을 투자한다" style="width:100%;">
+  </div>
+  <button class="btn-primary" style="margin-top:0.75rem;" onclick="generatePremortem()">Pre-Mortem 생성</button>
+  <div id="pm-result" class="results"></div>
+</div>
+
+<footer>
+  Monte Carlo Decision Simulator — Cycle 3 Build-to-Understand | Claude Code Operational Self v3.0
+</footer>
+
+<script>
+// ─── Expected Value ───
+function addScenario() {
+  const row = document.createElement('div');
+  row.className = 'scenario-row';
+  row.innerHTML = `
+    <input type="text" placeholder="시나리오 이름">
+    <input type="text" placeholder="결과 설명">
+    <input type="number" placeholder="확률(%)" min="0" max="100" step="0.1">
+    <input type="number" placeholder="가치(₩)" step="1000000">
+    <button class="btn-danger btn-sm" onclick="removeScenario(this)">✕</button>
+  `;
+  document.getElementById('ev-scenarios').appendChild(row);
+}
+
+function removeScenario(btn) {
+  const rows = document.querySelectorAll('#ev-scenarios .scenario-row');
+  if (rows.length > 1) btn.closest('.scenario-row').remove();
+}
+
+function computeEV() {
+  const rows = document.querySelectorAll('#ev-scenarios .scenario-row');
+  let ev = 0;
+  let totalProb = 0;
+  let best = null, worst = null;
+  const scenarios = [];
+
+  rows.forEach(row => {
+    const inputs = row.querySelectorAll('input');
+    const name = inputs[0].value || 'Unnamed';
+    const desc = inputs[1].value || '-';
+    const prob = parseFloat(inputs[2].value) || 0;
+    const value = parseFloat(inputs[3].value) || 0;
+
+    totalProb += prob;
+    ev += (prob / 100) * value;
+    const scenario = { name, desc, prob, value };
+    scenarios.push(scenario);
+
+    if (!best || value > best.value) best = scenario;
+    if (!worst || value < worst.value) worst = scenario;
+  });
+
+  const fmt = n => new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 }).format(n);
+
+  document.getElementById('ev-result').innerHTML = `
+    <div class="metric-grid">
+      <div class="metric">
+        <div class="metric-value ${ev >= 0 ? 'positive' : 'negative'}">${fmt(ev)}</div>
+        <div class="metric-label">기대값 (EV)</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">${totalProb.toFixed(1)}%</div>
+        <div class="metric-label">총 확률 (${totalProb > 100 ? '⚠ 초과' : totalProb < 100 ? '⚠ 부족' : '✅'})</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value positive">${best.name}</div>
+        <div class="metric-label">최상 시나리오 (${fmt(best.value)})</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value negative">${worst.name}</div>
+        <div class="metric-label">최악 시나리오 (${fmt(worst.value)})</div>
+      </div>
+    </div>
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.5rem;">
+      ${ev >= 0 ? '✅ EV 양수 — 장기적으로 이익이 예상됩니다.' : '⚠ EV 음수 — 이 결정은 장기적으로 손실이 예상됩니다.'}
+      ${totalProb > 100 ? ' 확률 합계가 100%를 초과합니다. 확률을 정규화하세요.' : totalProb < 100 ? ' 확률 합계가 100% 미만입니다. 빠진 시나리오가 있나요?' : ''}
+    </p>
+  `;
+}
+
+// ─── Bayesian Update ───
+function bayesianUpdate() {
+  const prior = parseFloat(document.getElementById('prior').value) / 100;
+  const sensitivity = parseFloat(document.getElementById('sensitivity').value) / 100;
+  const falsePositive = parseFloat(document.getElementById('false-positive').value) / 100;
+
+  // P(E) = P(E|H)*P(H) + P(E|¬H)*P(¬H)
+  const pE = sensitivity * prior + falsePositive * (1 - prior);
+  // P(H|E) = P(E|H) * P(H) / P(E)
+  const posterior = (sensitivity * prior) / pE;
+
+  document.getElementById('bayesian-result').innerHTML = `
+    <div class="bayesian">
+      <div class="bayesian-row">
+        <span class="bayesian-label">사전 확률 P(H)</span>
+        <span class="bayesian-value">${(prior * 100).toFixed(1)}%</span>
+      </div>
+      <div class="bayesian-row">
+        <span class="bayesian-label">증거 관찰 확률 P(E)</span>
+        <span>${(pE * 100).toFixed(1)}%</span>
+      </div>
+      <div class="bayesian-row" style="border-top:2px solid var(--accent);padding-top:0.75rem;">
+        <span class="bayesian-label">→ 사후 확률 P(H|E)</span>
+        <span class="bayesian-value" style="font-size:1.4rem;">${(posterior * 100).toFixed(1)}%</span>
+      </div>
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;">
+        증거를 관찰한 후, 가설이 참일 확률이 <strong>${(prior * 100).toFixed(1)}% → ${(posterior * 100).toFixed(1)}%</strong>로 업데이트되었습니다.
+        ${posterior > prior ? '📈 증거가 가설을 강하게 지지합니다.' : '📉 증거가 가설을 약화시킵니다.'}
+      </p>
+    </div>
+  `;
+}
+
+// ─── Monte Carlo Simulation ───
+function runMonteCarlo() {
+  const n = parseInt(document.getElementById('sim-count').value);
+  const mean = parseFloat(document.getElementById('sim-mean').value) / 100;
+  const vol = parseFloat(document.getElementById('sim-vol').value) / 100;
+  const years = parseInt(document.getElementById('sim-years').value);
+  const capital = parseFloat(document.getElementById('sim-capital').value);
+
+  // Box-Muller transform for normal random
+  const randn = () => {
+    let u = 0, v = 0;
+    while (u === 0) u = Math.random();
+    while (v === 0) v = Math.random();
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  };
+
+  const outcomes = [];
+  let sum = 0;
+  for (let i = 0; i < n; i++) {
+    const annualReturn = mean + vol * randn();
+    const finalCapital = capital * Math.exp(annualReturn * years);
+    outcomes.push(finalCapital);
+    sum += finalCapital;
+  }
+
+  outcomes.sort((a, b) => a - b);
+  const avg = sum / n;
+  const median = outcomes[Math.floor(n / 2)];
+  const p5 = outcomes[Math.floor(n * 0.05)];
+  const p95 = outcomes[Math.floor(n * 0.95)];
+  const winCount = outcomes.filter(o => o > capital).length;
+  const winRate = (winCount / n) * 100;
+
+  const fmt = n => new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 }).format(n);
+
+  document.getElementById('mc-result').innerHTML = `
+    <div class="metric-grid">
+      <div class="metric">
+        <div class="metric-value">${fmt(avg)}</div>
+        <div class="metric-label">평균 최종 자산</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">${fmt(median)}</div>
+        <div class="metric-label">중앙값</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value positive">${winRate.toFixed(1)}%</div>
+        <div class="metric-label">수익 확률</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">${fmt(p5)}</div>
+        <div class="metric-label">하위 5% (VaR)</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">${fmt(p95)}</div>
+        <div class="metric-label">상위 5%</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">${(p95 / p5).toFixed(1)}x</div>
+        <div class="metric-label">상위/하위 비율</div>
+      </div>
+    </div>
+    <div class="distribution-bar">
+      <div class="dist-win" style="flex:${winRate};min-width:${winRate > 0 ? '30px' : '0'};">${winRate.toFixed(0)}% 수익</div>
+      <div class="dist-loss" style="flex:${100-winRate};min-width:${(100-winRate) > 0 ? '30px' : '0'};">${(100-winRate).toFixed(0)}% 손실</div>
+    </div>
+    <p style="font-size:0.8rem;color:var(--text-secondary);">
+      ${n.toLocaleString()}회 시뮬레이션 | 기대수익률 ${(mean*100).toFixed(0)}% | 변동성 ${(vol*100).toFixed(0)}% | ${years}년 | VaR(95%): ${fmt(capital - p5)}
+    </p>
+  `;
+}
+
+// ─── Pre-Mortem ───
+function generatePremortem() {
+  const decision = document.getElementById('pm-decision').value || '이 결정';
+
+  const causes = [
+    '시장 타이밍을 완전히 잘못 짚었다. 준비가 끝났을 때는 이미 기회가 사라졌다.',
+    '핵심 가정 하나가 틀렸다. "사람들이 반드시 X를 원할 것이다" — 아무도 원하지 않았다.',
+    '자원을 과소평가했다. 예상보다 3배의 시간과 돈이 들었다.',
+    '경쟁사의 반응을 전혀 예상하지 못했다. 그들은 우리보다 빠르게 움직였다.',
+    '팀이 무너졌다. 핵심 인력이 가장 중요한 순간에 떠났다.',
+    '블랙스완 이벤트. 아무도 예측하지 못한 외부 충격이 모든 것을 바꿨다.',
+    '실행 속도가 너무 느렸다. 완벽을 추구하다가 아무것도 출시하지 못했다.',
+    '고객 피드백을 무시했다. 우리가 만든 것은 우리가 원하는 것이지, 시장이 원하는 것이 아니었다.',
+    '현금 흐름을 관리하지 못했다. 수익은 나는데 현금이 바닥났다.',
+    '확증 편향에 빠졌다. 성공 신호만 보고, 실패 신호는 모두 무시했다.'
+  ];
+
+  const successes = [
+    '핵심 가정이 정확히 맞아떨어졌다. 타이밍, 시장, 실행이 모두 정렬되었다.',
+    '팀이 예상을 뛰어넘는 성과를 냈다. 각자 맡은 영역에서 최고의 결과.',
+    '경쟁사가 우리의 움직임을 과소평가했다. 그들이 반응할 때쯤 우리는 이미 앞서 있었다.',
+    '고객이 우리가 예상하지 못한 방식으로 제품을 사용했고, 새로운 시장이 열렸다.',
+    '꾸준함이 승리했다. 작은 개선을 매일 쌓아올려 복리의 기적을 만들었다.'
+  ];
+
+  const shuffle = arr => arr.sort(() => Math.random() - 0.5);
+  const top3 = shuffle([...causes]).slice(0, 3);
+  const top2 = shuffle([...successes]).slice(0, 2);
+
+  document.getElementById('pm-result').innerHTML = `
+    <div class="premortem">
+      <strong>💀 Pre-Mortem: "${decision}"이(가) 실패했다면…</strong>
+      <ol style="margin-top:0.5rem;padding-left:1.25rem;">
+        ${top3.map(c => `<li style="margin-bottom:0.25rem;">${c}</li>`).join('')}
+      </ol>
+      <p style="font-size:0.8rem;margin-top:0.5rem;">💡 지금 무엇을 바꿀 수 있는가? 이 3가지 실패 모드에 대한 방어책을 세워라.</p>
+    </div>
+    <div class="postmortem">
+      <strong>🏆 Post-Mortem: 성공했다면…</strong>
+      <ol style="margin-top:0.5rem;padding-left:1.25rem;">
+        ${top2.map(c => `<li style="margin-bottom:0.25rem;">${c}</li>`).join('')}
+      </ol>
+      <p style="font-size:0.8rem;margin-top:0.5rem;">💡 이 성공 요인에 자원을 집중하라. 성공의 확률을 높이는 데 투자하라.</p>
+    </div>
+  `;
+}
+
+// ─── Run initial simulations ───
+computeEV();
+runMonteCarlo();
+</script>
+
+</body>
+</html>

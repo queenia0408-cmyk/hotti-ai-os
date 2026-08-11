@@ -1,0 +1,1199 @@
+{
+  "skills_parsed": 61,
+  "skills_failed": 0,
+  "total_conflicts": 149,
+  "conflicts": [
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "ask",
+      "skill_b": "merge-readiness",
+      "detail": "'ask' says always 'use', but 'merge-readiness' says never 'use'",
+      "recommendation": "Resolve the contradiction between 'ask' and 'merge-readiness'"
+    },
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "ask",
+      "skill_b": "omc-plan",
+      "detail": "'ask' says always 'use', but 'omc-plan' says never 'use'",
+      "recommendation": "Resolve the contradiction between 'ask' and 'omc-plan'"
+    },
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "ask",
+      "skill_b": "self-improve",
+      "detail": "'self-improve' says always 'run', but 'ask' says never 'run'",
+      "recommendation": "Resolve the contradiction between 'ask' and 'self-improve'"
+    },
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "ask",
+      "skill_b": "team",
+      "detail": "'team' says always 'run', but 'ask' says never 'run'",
+      "recommendation": "Resolve the contradiction between 'ask' and 'team'"
+    },
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "ccg",
+      "skill_b": "merge-readiness",
+      "detail": "'ccg' says always 'use', but 'merge-readiness' says never 'use'",
+      "recommendation": "Resolve the contradiction between 'ccg' and 'merge-readiness'"
+    },
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "ccg",
+      "skill_b": "omc-plan",
+      "detail": "'ccg' says always 'use', but 'omc-plan' says never 'use'",
+      "recommendation": "Resolve the contradiction between 'ccg' and 'omc-plan'"
+    },
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "deep-interview",
+      "skill_b": "merge-readiness",
+      "detail": "'deep-interview' says always 'use', but 'merge-readiness' says never 'use'",
+      "recommendation": "Resolve the contradiction between 'deep-interview' and 'merge-readiness'"
+    },
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "deep-interview",
+      "skill_b": "omc-plan",
+      "detail": "'deep-interview' says always 'use', but 'omc-plan' says never 'use'",
+      "recommendation": "Resolve the contradiction between 'deep-interview' and 'omc-plan'"
+    },
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "defuddle",
+      "skill_b": "merge-readiness",
+      "detail": "'defuddle' says always 'use', but 'merge-readiness' says never 'use'",
+      "recommendation": "Resolve the contradiction between 'defuddle' and 'merge-readiness'"
+    },
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "defuddle",
+      "skill_b": "omc-plan",
+      "detail": "'defuddle' says always 'use', but 'omc-plan' says never 'use'",
+      "recommendation": "Resolve the contradiction between 'defuddle' and 'omc-plan'"
+    },
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "merge-readiness",
+      "skill_b": "team",
+      "detail": "'team' says always 'use', but 'merge-readiness' says never 'use'",
+      "recommendation": "Resolve the contradiction between 'merge-readiness' and 'team'"
+    },
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "omc-plan",
+      "skill_b": "team",
+      "detail": "'team' says always 'use', but 'omc-plan' says never 'use'",
+      "recommendation": "Resolve the contradiction between 'omc-plan' and 'team'"
+    },
+    {
+      "severity": "critical",
+      "category": "conflict",
+      "skill_a": "self-improve",
+      "skill_b": "team",
+      "detail": "'self-improve' says always 'run', but 'team' says never 'run'",
+      "recommendation": "Resolve the contradiction between 'self-improve' and 'team'"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "animation",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "auto-ingest",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "backup-orchestrator",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "beauty-health-expert",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "content-scheduler",
+      "detail": "Shared tools (27):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "content-writer",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "daily-brief",
+      "detail": "Shared tools (26):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "instagram-strategy",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "knowledge-sync",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "marketing-strategy",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "seo-optimizer",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "stock-analysis",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "video-production",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "web-design",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "3d-design",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "auto-ingest",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "backup-orchestrator",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "beauty-health-expert",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "content-scheduler",
+      "detail": "Shared tools (27):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "content-writer",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "daily-brief",
+      "detail": "Shared tools (26):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "instagram-strategy",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "knowledge-sync",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "marketing-strategy",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "seo-optimizer",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "stock-analysis",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "video-production",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "web-design",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "animation",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "backup-orchestrator",
+      "detail": "Shared tools (23):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "beauty-health-expert",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "content-scheduler",
+      "detail": "Shared tools (24):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "content-writer",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "daily-brief",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "instagram-strategy",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "knowledge-sync",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "marketing-strategy",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "seo-optimizer",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "stock-analysis",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "video-production",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "web-design",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "auto-ingest",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (25):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "beauty-health-expert",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "content-scheduler",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "content-writer",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "daily-brief",
+      "detail": "Shared tools (23):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "instagram-strategy",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "knowledge-sync",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "marketing-strategy",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "seo-optimizer",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "stock-analysis",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "video-production",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "web-design",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "backup-orchestrator",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (25):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "beauty-health-expert",
+      "skill_b": "content-scheduler",
+      "detail": "Shared tools (27):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "beauty-health-expert",
+      "skill_b": "content-writer",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "beauty-health-expert",
+      "skill_b": "daily-brief",
+      "detail": "Shared tools (26):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "beauty-health-expert",
+      "skill_b": "instagram-strategy",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "beauty-health-expert",
+      "skill_b": "knowledge-sync",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "beauty-health-expert",
+      "skill_b": "marketing-strategy",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "beauty-health-expert",
+      "skill_b": "seo-optimizer",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "beauty-health-expert",
+      "skill_b": "stock-analysis",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "beauty-health-expert",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "beauty-health-expert",
+      "skill_b": "video-production",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "beauty-health-expert",
+      "skill_b": "web-design",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "beauty-health-expert",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-scheduler",
+      "skill_b": "content-writer",
+      "detail": "Shared tools (27):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-scheduler",
+      "skill_b": "daily-brief",
+      "detail": "Shared tools (25):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-scheduler",
+      "skill_b": "instagram-strategy",
+      "detail": "Shared tools (27):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-scheduler",
+      "skill_b": "knowledge-sync",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-scheduler",
+      "skill_b": "marketing-strategy",
+      "detail": "Shared tools (27):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-scheduler",
+      "skill_b": "seo-optimizer",
+      "detail": "Shared tools (27):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-scheduler",
+      "skill_b": "stock-analysis",
+      "detail": "Shared tools (27):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-scheduler",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (27):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-scheduler",
+      "skill_b": "video-production",
+      "detail": "Shared tools (27):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-scheduler",
+      "skill_b": "web-design",
+      "detail": "Shared tools (27):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-scheduler",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (27):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-writer",
+      "skill_b": "daily-brief",
+      "detail": "Shared tools (26):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-writer",
+      "skill_b": "instagram-strategy",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-writer",
+      "skill_b": "knowledge-sync",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-writer",
+      "skill_b": "marketing-strategy",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-writer",
+      "skill_b": "seo-optimizer",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-writer",
+      "skill_b": "stock-analysis",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-writer",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-writer",
+      "skill_b": "video-production",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-writer",
+      "skill_b": "web-design",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "content-writer",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "daily-brief",
+      "skill_b": "instagram-strategy",
+      "detail": "Shared tools (26):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "daily-brief",
+      "skill_b": "knowledge-sync",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "daily-brief",
+      "skill_b": "marketing-strategy",
+      "detail": "Shared tools (26):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "daily-brief",
+      "skill_b": "seo-optimizer",
+      "detail": "Shared tools (26):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "daily-brief",
+      "skill_b": "stock-analysis",
+      "detail": "Shared tools (26):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "daily-brief",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (26):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "daily-brief",
+      "skill_b": "video-production",
+      "detail": "Shared tools (26):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "daily-brief",
+      "skill_b": "web-design",
+      "detail": "Shared tools (26):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "daily-brief",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (26):  , *, ,, -, F",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "instagram-strategy",
+      "skill_b": "knowledge-sync",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "instagram-strategy",
+      "skill_b": "marketing-strategy",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "instagram-strategy",
+      "skill_b": "seo-optimizer",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "instagram-strategy",
+      "skill_b": "stock-analysis",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "instagram-strategy",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "instagram-strategy",
+      "skill_b": "video-production",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "instagram-strategy",
+      "skill_b": "web-design",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "instagram-strategy",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "knowledge-sync",
+      "skill_b": "marketing-strategy",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "knowledge-sync",
+      "skill_b": "seo-optimizer",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "knowledge-sync",
+      "skill_b": "stock-analysis",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "knowledge-sync",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "knowledge-sync",
+      "skill_b": "video-production",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "knowledge-sync",
+      "skill_b": "web-design",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "knowledge-sync",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (22):  , *, ,, -, R",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "marketing-strategy",
+      "skill_b": "seo-optimizer",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "marketing-strategy",
+      "skill_b": "stock-analysis",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "marketing-strategy",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "marketing-strategy",
+      "skill_b": "video-production",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "marketing-strategy",
+      "skill_b": "web-design",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "marketing-strategy",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "seo-optimizer",
+      "skill_b": "stock-analysis",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "seo-optimizer",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "seo-optimizer",
+      "skill_b": "video-production",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "seo-optimizer",
+      "skill_b": "web-design",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "seo-optimizer",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "stock-analysis",
+      "skill_b": "trend-scanner",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "stock-analysis",
+      "skill_b": "video-production",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "stock-analysis",
+      "skill_b": "web-design",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "stock-analysis",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "trend-scanner",
+      "skill_b": "video-production",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "trend-scanner",
+      "skill_b": "web-design",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "trend-scanner",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "video-production",
+      "skill_b": "web-design",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "video-production",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    },
+    {
+      "severity": "warning",
+      "category": "duplicate",
+      "skill_a": "web-design",
+      "skill_b": "youtube-seo",
+      "detail": "Shared tools (28):  , *, ,, -, E",
+      "recommendation": "Review if these skills serve distinct purposes"
+    }
+  ]
+}

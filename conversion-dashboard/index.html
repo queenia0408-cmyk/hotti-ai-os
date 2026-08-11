@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AARRR Conversion Funnel Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f8fafc;
+    --surface: #fff;
+    --text: #1e293b;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --accent: #8b5cf6;
+    --accent-hover: #7c3aed;
+    --positive: #10b981;
+    --negative: #ef4444;
+    --warning: #f59e0b;
+    --radius: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --text: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --border: #334155;
+      --accent: #a78bfa;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+  }
+
+  body {
+    font-family: 'Inter', 'Pretendard', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem; }
+  .subtitle { color: var(--text-secondary); margin-bottom: 2rem; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+
+  .card-header {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Funnel */
+  .funnel-container { margin: 1rem 0; }
+  .funnel-stage {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .funnel-label {
+    width: 100px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-align: right;
+    padding-right: 0.75rem;
+    flex-shrink: 0;
+  }
+  .funnel-bar-wrap { flex: 1; position: relative; }
+  .funnel-bar {
+    height: 36px;
+    border-radius: 0 6px 6px 0;
+    display: flex;
+    align-items: center;
+    padding: 0 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    transition: width 0.3s;
+    min-width: 60px;
+    justify-content: space-between;
+  }
+  .funnel-bar .rate { font-size: 0.7rem; opacity: 0.85; }
+
+  .funnel-colors .a { background: #6366f1; }
+  .funnel-colors .b { background: #8b5cf6; }
+  .funnel-colors .c { background: #a78bfa; }
+  .funnel-colors .d { background: #c4b5fd; color: #4c1d95; }
+  .funnel-colors .e { background: #ddd6fe; color: #4c1d95; }
+  .funnel-colors .f { background: #ede9fe; color: #4c1d95; }
+
+  /* Metrics */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 0.375rem; }
+  .form-group label { font-size: 0.75rem; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+  .form-group input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: inherit;
+  }
+  .form-group input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  input[type="range"] { width: 100%; }
+
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+  .metric {
+    padding: 1rem;
+    background: var(--bg);
+    border-radius: var(--radius);
+    text-align: center;
+  }
+  .metric-value { font-size: 1.4rem; font-weight: 700; }
+  .metric-value.positive { color: var(--positive); }
+  .metric-value.negative { color: var(--negative); }
+  .metric-value.warning { color: var(--warning); }
+  .metric-label { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem; }
+
+  button {
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    background: var(--accent);
+    color: #fff;
+  }
+  button:hover { background: var(--accent-hover); }
+
+  .what-if { margin-top: 1rem; }
+  .what-if label { font-size: 0.8rem; color: var(--text-secondary); }
+  .what-if input[type="range"] { width: 100%; margin: 0.5rem 0; }
+
+  .health-indicator {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    margin-right: 0.25rem;
+  }
+  .health-green { background: var(--positive); }
+  .health-yellow { background: var(--warning); }
+  .health-red { background: var(--negative); }
+
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-secondary); }
+</style>
+</head>
+<body>
+
+<h1>📊 AARRR Conversion Funnel Dashboard</h1>
+<p class="subtitle">Pirate Metrics (AARRR) + LTV/CAC + What-if 모델링 — Cycle 3 Build-to-Understand</p>
+
+<!-- Input Panel -->
+<div class="card">
+  <div class="card-header">📝 시나리오 입력</div>
+  <div class="form-grid">
+    <div class="form-group">
+      <label>월간 신규 방문자</label>
+      <input type="number" id="visitors" value="10000" min="0" step="100">
+    </div>
+    <div class="form-group">
+      <label>획득(Activation) 전환율 (%)</label>
+      <input type="number" id="activation-rate" value="30" min="0" max="100" step="0.1">
+    </div>
+    <div class="form-group">
+      <label>유지(Retention)율 — D30 (%)</label>
+      <input type="number" id="retention-rate" value="20" min="0" max="100" step="0.1">
+    </div>
+    <div class="form-group">
+      <label>유료 전환율 (%)</label>
+      <input type="number" id="revenue-rate" value="5" min="0" max="100" step="0.1">
+    </div>
+    <div class="form-group">
+      <label>월간 구독료 ARPU (₩)</label>
+      <input type="number" id="arpu" value="15000" min="0" step="1000">
+    </div>
+    <div class="form-group">
+      <label>추천(Referral) K-factor</label>
+      <input type="number" id="kfactor" value="0.3" min="0" max="10" step="0.01">
+    </div>
+    <div class="form-group">
+      <label>고객획득비용 CAC (₩)</label>
+      <input type="number" id="cac" value="5000" min="0" step="100">
+    </div>
+    <div class="form-group">
+      <label>월간 이탈률 (Churn %)</label>
+      <input type="number" id="churn" value="5" min="0" max="100" step="0.1">
+    </div>
+  </div>
+  <div style="margin-top:1rem;display:flex;gap:0.5rem;">
+    <button onclick="compute()">📊 계산</button>
+    <button onclick="resetAll()" style="background:var(--border);color:var(--text);">초기화</button>
+  </div>
+</div>
+
+<!-- Funnel Visualization -->
+<div class="card">
+  <div class="card-header">🔻 AARRR Funnel</div>
+  <div class="funnel-container funnel-colors" id="funnel-viz"></div>
+</div>
+
+<!-- KPI Dashboard -->
+<div class="card">
+  <div class="card-header">📈 KPI Dashboard</div>
+  <div id="kpi-grid"></div>
+</div>
+
+<!-- LTV/CAC Analysis -->
+<div class="card">
+  <div class="card-header">💰 LTV/CAC 심층 분석</div>
+  <div id="ltv-analysis"></div>
+</div>
+
+<!-- What-if Slider -->
+<div class="card">
+  <div class="card-header">🎚️ What-if 시나리오 모델링</div>
+  <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem;">
+    슬라이더를 움직여 각 요소가 최종 수익에 미치는 영향을 실시간으로 확인하세요.
+  </p>
+  <div class="what-if" id="what-if-controls"></div>
+  <div id="what-if-result" style="margin-top:1rem;"></div>
+</div>
+
+<footer>
+  AARRR Conversion Funnel Dashboard — Cycle 3 Build-to-Understand | Claude Code Operational Self v3.0
+</footer>
+
+<script>
+// ─── Core Computation ───
+function compute() {
+  const visitors = parseInt(document.getElementById('visitors').value) || 0;
+  const activationRate = parseFloat(document.getElementById('activation-rate').value) / 100;
+  const retentionRate = parseFloat(document.getElementById('retention-rate').value) / 100;
+  const revenueRate = parseFloat(document.getElementById('revenue-rate').value) / 100;
+  const arpu = parseFloat(document.getElementById('arpu').value) || 0;
+  const kfactor = parseFloat(document.getElementById('kfactor').value) || 0;
+  const cac = parseFloat(document.getElementById('cac').value) || 0;
+  const churnRate = parseFloat(document.getElementById('churn').value) / 100;
+
+  // AARRR stages
+  const acquisition = visitors;
+  const activation = Math.round(acquisition * activationRate);
+  const retention = Math.round(activation * retentionRate);
+  const revenue = Math.round(retention * revenueRate);
+  const referral = Math.round(revenue * kfactor);
+
+  const totalWithReferral = revenue + referral;
+  const monthlyRevenue = totalWithReferral * arpu;
+  const annualRevenue = monthlyRevenue * 12;
+  const totalCAC = acquisition * cac;
+
+  // LTV
+  const avgLifetimeMonths = churnRate > 0 ? (1 / churnRate) : 24;
+  const ltv = arpu * avgLifetimeMonths;
+  const ltvCacRatio = cac > 0 ? ltv / cac : 999;
+
+  // Payback
+  const paybackMonths = arpu > 0 ? cac / arpu : 999;
+
+  // Funnel visualization
+  const stages = [
+    { label: 'Acquisition', value: acquisition, cls: 'a', desc: '방문자' },
+    { label: 'Activation', value: activation, cls: 'b', desc: '가입/활성화' },
+    { label: 'Retention', value: retention, cls: 'c', desc: 'D30 유지' },
+    { label: 'Revenue', value: revenue, cls: 'd', desc: '유료 전환' },
+    { label: 'Referral', value: referral, cls: 'e', desc: '추천 유입' },
+  ];
+
+  const maxVal = Math.max(...stages.map(s => s.value), 1);
+
+  document.getElementById('funnel-viz').innerHTML = stages.map((s, i) => {
+    const pct = (s.value / maxVal * 100);
+    const conversionFromPrev = i > 0 ? ` (${stages[i-1].value > 0 ? (s.value / stages[i-1].value * 100).toFixed(1) : 0}%)` : '';
+    return `
+      <div class="funnel-stage">
+        <div class="funnel-label">${s.label}</div>
+        <div class="funnel-bar-wrap">
+          <div class="funnel-bar ${s.cls}" style="width:${Math.max(pct, 3)}%">
+            <span>${s.value.toLocaleString()} ${s.desc}</span>
+            <span class="rate">${conversionFromPrev}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // KPI Grid
+  const fmt = n => new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 }).format(n);
+
+  const kpis = [
+    { value: fmt(monthlyRevenue), label: '월간 반복 수익 (MRR)', cls: monthlyRevenue > totalCAC ? 'positive' : 'negative' },
+    { value: fmt(annualRevenue), label: '연간 반복 수익 (ARR)', cls: 'positive' },
+    { value: fmt(totalCAC), label: '월간 CAC 총액', cls: 'warning' },
+    { value: monthlyRevenue - totalCAC > 0 ? fmt(monthlyRevenue - totalCAC) : fmt(monthlyRevenue - totalCAC), label: '월간 순수익', cls: monthlyRevenue > totalCAC ? 'positive' : 'negative' },
+    { value: ltvCacRatio >= 3 ? ltvCacRatio.toFixed(1) + 'x ✅' : ltvCacRatio.toFixed(1) + 'x ⚠', label: 'LTV/CAC 비율', cls: ltvCacRatio >= 3 ? 'positive' : 'negative' },
+    { value: paybackMonths.toFixed(1) + '개월', label: 'CAC 회수 기간', cls: paybackMonths <= 12 ? 'positive' : 'warning' },
+    { value: kfactor.toFixed(2), label: 'K-factor', cls: kfactor >= 0.5 ? 'positive' : kfactor >= 0.2 ? 'warning' : 'negative' },
+    { value: avgLifetimeMonths.toFixed(1) + '개월', label: '평균 고객 생애', cls: avgLifetimeMonths >= 24 ? 'positive' : 'warning' },
+  ];
+
+  document.getElementById('kpi-grid').innerHTML = `
+    <div class="metric-grid">
+      ${kpis.map(k => `
+        <div class="metric">
+          <div class="metric-value ${k.cls}">${k.value}</div>
+          <div class="metric-label">${k.label}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  // LTV/CAC Deep Analysis
+  const health = ltvCacRatio >= 3 ? ['green', '건강 — 성장 가속 준비 완료'] :
+                 ltvCacRatio >= 2 ? ['yellow', '주의 — 마진이 얇음. CAC 절감 또는 LTV 증가 필요'] :
+                 ['red', '위험 — CAC가 LTV 대비 과도. 즉시 개선 필요'];
+
+  document.getElementById('ltv-analysis').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div style="padding:1rem;background:var(--bg);border-radius:var(--radius);">
+        <div style="font-size:0.75rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;">고객 생애 가치 (LTV)</div>
+        <div style="font-size:2rem;font-weight:700;color:var(--accent);">${fmt(ltv)}</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);">
+          ARPU ${fmt(arpu)} × 평균 ${avgLifetimeMonths.toFixed(1)}개월<br>
+          이탈률: ${(churnRate*100).toFixed(1)}%
+        </div>
+      </div>
+      <div style="padding:1rem;background:var(--bg);border-radius:var(--radius);">
+        <div style="font-size:0.75rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;">고객획득비용 (CAC)</div>
+        <div style="font-size:2rem;font-weight:700;color:var(--warning);">${fmt(cac)}</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);">
+          총 마케팅비 ÷ 신규 고객 수<br>
+          회수 기간: ${paybackMonths.toFixed(1)}개월
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:1rem;padding:1rem;background:var(--bg);border-radius:var(--radius);">
+      <span class="health-indicator health-${health[0]}"></span>
+      <strong>LTV/CAC = ${ltvCacRatio.toFixed(1)}x</strong> — ${health[1]}
+    </div>
+    <div style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-secondary);">
+      💡 LTV/CAC 벤치마크: 3x 이상 = 건강 | 2x = 최소 기준 | 1x 이하 = 사업 모델 위험
+    </div>
+  `;
+
+  // What-if controls
+  const whatIfVars = [
+    { id: 'wi-activation-rate', label: 'Activation 전환율', value: parseFloat(document.getElementById('activation-rate').value), min: 0, max: 100, step: 0.5 },
+    { id: 'wi-retention-rate', label: 'D30 Retention', value: parseFloat(document.getElementById('retention-rate').value), min: 0, max: 100, step: 0.5 },
+    { id: 'wi-revenue-rate', label: '유료 전환율', value: parseFloat(document.getElementById('revenue-rate').value), min: 0, max: 100, step: 0.5 },
+    { id: 'wi-arpu', label: 'ARPU', value: arpu, min: 0, max: arpu * 3, step: 100 },
+    { id: 'wi-kfactor', label: 'K-factor', value: kfactor * 100, min: 0, max: 200, step: 1 },
+    { id: 'wi-churn', label: '이탈률', value: churnRate * 100, min: 0, max: 20, step: 0.1 },
+  ];
+
+  document.getElementById('what-if-controls').innerHTML = whatIfVars.map(v => `
+    <div style="margin-bottom:0.75rem;">
+      <label style="display:flex;justify-content:space-between;">
+        <span>${v.label}</span>
+        <span id="${v.id}-val" style="font-weight:600;font-size:0.85rem;">${v.value.toFixed(1)}${v.id.includes('arpu') ? '₩' : '%'}</span>
+      </label>
+      <input type="range" id="${v.id}" min="${v.min}" max="${v.max}" step="${v.step}" value="${v.value}"
+        oninput="whatIfUpdate('${v.id}', this.value, '${v.label}')">
+    </div>
+  `).join('');
+}
+
+function whatIfUpdate(id, value, label) {
+  const isArpu = id.includes('arpu');
+  document.getElementById(id + '-val').textContent = parseFloat(value).toFixed(1) + (isArpu ? '₩' : '%');
+
+  // Quick sensitivity: show impact on monthly revenue
+  const visitors = parseInt(document.getElementById('visitors').value) || 0;
+  const arpu = isArpu ? parseFloat(value) : parseFloat(document.getElementById('arpu').value) || 0;
+  const activationRate = (id === 'wi-activation-rate' ? parseFloat(value) : parseFloat(document.getElementById('activation-rate').value)) / 100;
+  const retentionRate = (id === 'wi-retention-rate' ? parseFloat(value) : parseFloat(document.getElementById('retention-rate').value)) / 100;
+  const revenueRate = (id === 'wi-revenue-rate' ? parseFloat(value) : parseFloat(document.getElementById('revenue-rate').value)) / 100;
+  const kfactor = (id === 'wi-kfactor' ? parseFloat(value) / 100 : parseFloat(document.getElementById('kfactor').value)) || 0;
+  const churnRate = (id === 'wi-churn' ? parseFloat(value) / 100 : parseFloat(document.getElementById('churn').value) / 100);
+
+  const activation = Math.round(visitors * activationRate);
+  const retention = Math.round(activation * retentionRate);
+  const revenue = Math.round(retention * revenueRate);
+  const referral = Math.round(revenue * kfactor);
+  const totalWithReferral = revenue + referral;
+  const monthlyRevenue = totalWithReferral * arpu;
+  const ltv = churnRate > 0 ? arpu * (1 / churnRate) : arpu * 24;
+
+  const fmt = n => new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 }).format(n);
+
+  document.getElementById('what-if-result').innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:0.75rem;">
+      <div class="metric" style="padding:0.75rem;">
+        <div class="metric-value">${fmt(monthlyRevenue)}</div>
+        <div class="metric-label">MRR</div>
+      </div>
+      <div class="metric" style="padding:0.75rem;">
+        <div class="metric-value">${fmt(ltv)}</div>
+        <div class="metric-label">LTV</div>
+      </div>
+      <div class="metric" style="padding:0.75rem;">
+        <div class="metric-value">${totalWithReferral.toLocaleString()}명</div>
+        <div class="metric-label">유료+추천 고객</div>
+      </div>
+    </div>
+  `;
+}
+
+function resetAll() {
+  document.getElementById('visitors').value = 10000;
+  document.getElementById('activation-rate').value = 30;
+  document.getElementById('retention-rate').value = 20;
+  document.getElementById('revenue-rate').value = 5;
+  document.getElementById('arpu').value = 15000;
+  document.getElementById('kfactor').value = 0.3;
+  document.getElementById('cac').value = 5000;
+  document.getElementById('churn').value = 5;
+  compute();
+}
+
+// Initial load
+compute();
+</script>
+
+</body>
+</html>

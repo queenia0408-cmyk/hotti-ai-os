@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code Build-to-Understand — Project Portfolio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --surface-hover: #334155;
+    --text: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --border: #334155;
+    --accent: #818cf8;
+    --accent-glow: rgba(129, 140, 248, 0.3);
+    --positive: #34d399;
+    --warning: #fbbf24;
+    --radius: 12px;
+  }
+
+  body {
+    font-family: 'Inter', 'Pretendard', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+    background: linear-gradient(180deg, rgba(129,140,248,0.1) 0%, transparent 100%);
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #818cf8, #c084fc, #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p { color: var(--text-secondary); font-size: 1.1rem; margin-top: 0.5rem; }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-value { font-size: 2rem; font-weight: 800; color: var(--accent); }
+  .stat-label { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.25rem;
+    padding: 0 2rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 24px var(--accent-glow);
+    transform: translateY(-2px);
+  }
+
+  .card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .card h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.375rem; }
+  .card .domain {
+    display: inline-block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: var(--accent);
+    color: #fff;
+    margin-bottom: 0.75rem;
+    align-self: flex-start;
+  }
+  .card p { color: var(--text-secondary); font-size: 0.85rem; flex: 1; }
+  .card .tech {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .card .tech span {
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', 'D2Coding', monospace;
+    font-size: 0.65rem;
+  }
+
+  .card .links { margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .card .links a {
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: background 0.15s;
+  }
+  .card .links a:hover { background: var(--surface-hover); }
+
+  .evolution-timeline {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+  }
+  .evolution-timeline h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; }
+  .timeline-track {
+    display: flex;
+    gap: 0.25rem;
+    align-items: flex-end;
+    height: 80px;
+  }
+  .timeline-bar {
+    flex: 1;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 0.5rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #fff;
+    min-width: 60px;
+  }
+  .tl-c1 { background: #6366f1; height: 48%; }
+  .tl-c2 { background: #8b5cf6; height: 58%; }
+  .tl-c3 { background: #a78bfa; height: 63%; }
+  .tl-c4 { background: #818cf8; height: 70%; }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Build-to-Understand Portfolio</h1>
+  <p>Claude Code Self-Evolution — Cycle 1→5. 지식에서 코드로, 코드에서 프로덕션으로, 품질로.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-value">8</div><div class="stat-label">Production Projects</div></div>
+    <div class="stat"><div class="stat-value">36</div><div class="stat-label">Knowledge Nodes</div></div>
+    <div class="stat"><div class="stat-value">67.7%</div><div class="stat-label">Domain Mastery</div></div>
+    <div class="stat"><div class="stat-value">68%</div><div class="stat-label">Karpathy Score</div></div>
+    <div class="stat"><div class="stat-value">2</div><div class="stat-label">Cron Jobs</div></div>
+    <div class="stat"><div class="stat-value">46</div><div class="stat-label">Tests Passing</div></div>
+  </div>
+</div>
+
+<div class="evolution-timeline">
+  <h2>📈 진화 궤적</h2>
+  <div class="timeline-track">
+    <div class="timeline-bar tl-c1">C1<br>48.8%</div>
+    <div class="timeline-bar tl-c2">C2<br>57.8%</div>
+    <div class="timeline-bar tl-c3">C3<br>63.2%</div>
+    <div class="timeline-bar tl-c4">C4<br>66.0%</div>
+    <div class="timeline-bar" style="background:#34d399;height:68%;">C5<br>67.7%</div>
+  </div>
+</div>
+
+<div class="grid">
+
+  <!-- Trading Backtest -->
+  <a href="file:///C:/Users/hotti/projects/trading-backtest/backtest.py" class="card">
+    <div class="card-icon">📊</div>
+    <div class="domain">Trading</div>
+    <h2>Trading Backtest Engine</h2>
+    <p>Momentum + Mean Reversion strategy backtester. Sharpe, Sortino, MaxDD, yfinance real data integration.</p>
+    <div class="tech">
+      <span>Python</span><span>yfinance</span><span>pandas</span><span>argparse</span>
+    </div>
+    <div class="links">
+      <span>backtest.py</span>
+      <span>README.md</span>
+      <span>requirements.txt</span>
+    </div>
+  </a>
+
+  <!-- Skill Auditor -->
+  <a href="file:///C:/Users/hotti/projects/skill-auditor/auditor.py" class="card">
+    <div class="card-icon">🔍</div>
+    <div class="domain">Meta / Systems</div>
+    <h2>Skill Ecosystem Auditor</h2>
+    <p>4-Axis conflict detection: Duplication, Contradiction, Dependency, Coverage. Scanned 61 skills, found 149 issues.</p>
+    <div class="tech">
+      <span>Python</span><span>YAML Parser</span><span>Jaccard</span><span>cron: daily 9:37</span>
+    </div>
+    <div class="links">
+      <span>auditor.py</span>
+      <span>README.md</span>
+      <span>audit-report.json</span>
+    </div>
+  </a>
+
+  <!-- Typography -->
+  <a href="file:///C:/Users/hotti/projects/typography-system/index.html" class="card">
+    <div class="card-icon">🔤</div>
+    <div class="domain">Design</div>
+    <h2>Typography Token System</h2>
+    <p>60+ CSS Custom Properties. Fluid clamp() scale, dark mode, CJK+Latin pairings, print styles.</p>
+    <div class="tech">
+      <span>CSS</span><span>Custom Properties</span><span>clamp()</span><span>Dark Mode</span>
+    </div>
+    <div class="links">
+      <span>tokens.css</span>
+      <span>index.html</span>
+      <span>README.md</span>
+    </div>
+  </a>
+
+  <!-- Decision Sim -->
+  <a href="file:///C:/Users/hotti/projects/decision-sim/index.html" class="card">
+    <div class="card-icon">🎲</div>
+    <div class="domain">Strategy</div>
+    <h2>Monte Carlo Decision Simulator</h2>
+    <p>EV Calculator, Bayesian Updater, Monte Carlo (Box-Muller), Pre-Mortem generator. Single HTML file.</p>
+    <div class="tech">
+      <span>HTML/JS</span><span>Box-Muller</span><span>GBM</span><span>VaR</span>
+    </div>
+    <div class="links">
+      <span>index.html</span>
+      <span>README.md</span>
+    </div>
+  </a>
+
+  <!-- Test Suites -->
+  <div class="card">
+    <div class="card-icon">🧪</div>
+    <div class="domain">Quality Engineering</div>
+    <h2>Unit Test Suites</h2>
+    <p>46 tests: backtest engine (24) + skill auditor (22). pytest, fixtures, edge cases, AAA pattern.</p>
+    <div class="tech">
+      <span>pytest</span><span>Python</span><span>Fixtures</span><span>AAA</span>
+    </div>
+    <div class="links">
+      <span>test_backtest.py</span>
+      <span>test_auditor.py</span>
+    </div>
+  </div>
+
+  <!-- Data Pipeline -->
+  <div class="card">
+    <div class="card-icon">🔄</div>
+    <div class="domain">Data Engineering</div>
+    <h2>Market Data Pipeline</h2>
+    <p>3-step ETL: yfinance → pandas metrics → JSON/HTML report. Sharpe, Sortino, MaxDD, RSI, SMA cross.</p>
+    <div class="tech">
+      <span>Python</span><span>yfinance</span><span>pandas</span><span>numpy</span>
+    </div>
+    <div class="links">
+      <span>pipeline.py</span>
+      <span>--tickers</span>
+      <span>--output JSON</span>
+    </div>
+  </div>
+
+  <!-- Funnel Dashboard -->
+  <a href="file:///C:/Users/hotti/projects/conversion-dashboard/index.html" class="card">
+    <div class="card-icon">📈</div>
+    <div class="domain">Marketing</div>
+    <h2>AARRR Funnel Dashboard</h2>
+    <p>Pirate Metrics visualization. LTV/CAC deep analysis, What-if sensitivity modeling, 8-KPI dashboard.</p>
+    <div class="tech">
+      <span>HTML/JS</span><span>AARRR</span><span>LTV/CAC</span><span>Sensitivity</span>
+    </div>
+    <div class="links">
+      <span>index.html</span>
+      <span>README.md</span>
+    </div>
+  </a>
+
+</div>
+
+<footer>
+  Claude Code Operational Self v5.0 — Quality Engineering Portfolio — C:\Users\hotti\projects\
+  <br>
+  Cycle 5: 46 tests passing | 36 knowledge nodes | 67.7% domain mastery | 68% karpathy
+  <br>
+  Cron: Skill Auditor daily 9:37 KST | Vault Health weekly Mon 9:47 KST
+</footer>
+
+</body>
+</html>
