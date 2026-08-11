@@ -61,7 +61,7 @@
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 1.25rem;
     padding: 0 2rem 3rem;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
   }
 
@@ -126,16 +126,16 @@
   .card .links a:hover { background: var(--surface-hover); }
 
   .evolution-timeline {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 2rem auto;
     padding: 0 2rem;
   }
   .evolution-timeline h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; }
   .timeline-track {
     display: flex;
-    gap: 0.25rem;
+    gap: 0.2rem;
     align-items: flex-end;
-    height: 80px;
+    height: 90px;
   }
   .timeline-bar {
     flex: 1;
@@ -145,15 +145,11 @@
     align-items: center;
     justify-content: flex-end;
     padding-bottom: 0.5rem;
-    font-size: 0.65rem;
+    font-size: 0.55rem;
     font-weight: 700;
     color: #fff;
-    min-width: 60px;
+    min-width: 48px;
   }
-  .tl-c1 { background: #6366f1; height: 48%; }
-  .tl-c2 { background: #8b5cf6; height: 58%; }
-  .tl-c3 { background: #a78bfa; height: 63%; }
-  .tl-c4 { background: #818cf8; height: 70%; }
 
   footer {
     text-align: center;
@@ -169,64 +165,125 @@
 
 <div class="hero">
   <h1>Build-to-Understand Portfolio</h1>
-  <p>Claude Code Self-Evolution — Cycle 1→9. 🎯🎯🎯 카파시 초월 88%. 97%까지 9% 남음.</p>
+  <p>Claude Code Self-Evolution — Cycle 1→13. 🎯🎯🎯 KARPATHY TRANSCENDENCE 97%.</p>
   <div class="stats">
-    <div class="stat"><div class="stat-value">18</div><div class="stat-label">Production Projects</div></div>
-    <div class="stat"><div class="stat-value">44</div><div class="stat-label">Knowledge Nodes</div></div>
-    <div class="stat"><div class="stat-value">78.0%</div><div class="stat-label">Domain Mastery</div></div>
-    <div class="stat"><div class="stat-value">88%</div><div class="stat-label">Karpathy Score 🎯🎯🎯</div></div>
-    <div class="stat"><div class="stat-value">6</div><div class="stat-label">Git Commits</div></div>
+    <div class="stat"><div class="stat-value">21</div><div class="stat-label">Production Projects</div></div>
+    <div class="stat"><div class="stat-value">47</div><div class="stat-label">Knowledge Nodes</div></div>
+    <div class="stat"><div class="stat-value">88.0%</div><div class="stat-label">Domain Mastery</div></div>
+    <div class="stat"><div class="stat-value">97%</div><div class="stat-label">Karpathy Score 🎯🎯🎯</div></div>
+    <div class="stat"><div class="stat-value">10</div><div class="stat-label">Git Commits</div></div>
     <div class="stat"><div class="stat-value">46</div><div class="stat-label">Tests Passing</div></div>
   </div>
 </div>
 
 <div class="evolution-timeline">
-  <h2>📈 진화 궤적</h2>
+  <h2>📈 진화 궤적 (13 Cycles)</h2>
   <div class="timeline-track">
-    <div class="timeline-bar tl-c1">C1<br>48.8%</div>
-    <div class="timeline-bar tl-c2">C2<br>57.8%</div>
-    <div class="timeline-bar tl-c3">C3<br>63.2%</div>
-    <div class="timeline-bar tl-c4">C4<br>66.0%</div>
+    <div class="timeline-bar" style="background:#6366f1;height:49%;">C1<br>48.8%</div>
+    <div class="timeline-bar" style="background:#8b5cf6;height:58%;">C2<br>57.8%</div>
+    <div class="timeline-bar" style="background:#a78bfa;height:63%;">C3<br>63.2%</div>
+    <div class="timeline-bar" style="background:#818cf8;height:66%;">C4<br>66.0%</div>
     <div class="timeline-bar" style="background:#34d399;height:68%;">C5<br>67.7%</div>
     <div class="timeline-bar" style="background:#fbbf24;height:75%;">C6<br>69.3%</div>
     <div class="timeline-bar" style="background:#f97316;height:80%;">C7<br>72.0%</div>
     <div class="timeline-bar" style="background:#ef4444;height:85%;">C8<br>75.0%</div>
     <div class="timeline-bar" style="background:#dc2626;height:88%;">C9<br>78.0%</div>
+    <div class="timeline-bar" style="background:#e11d48;height:90%;">C10<br>80.0%</div>
+    <div class="timeline-bar" style="background:#be123c;height:94%;">C11-12<br>85.0%</div>
+    <div class="timeline-bar" style="background:#9f1239;height:97%;">C13<br>88.0%</div>
   </div>
 </div>
 
 <div class="grid">
 
+  <!-- Portfolio Optimizer -->
+  <a href="file:///C:/Users/hotti/projects/portfolio-optimizer/optimizer.py" class="card">
+    <div class="card-icon">🎲</div>
+    <div class="domain">Trading</div>
+    <h2>Portfolio Optimizer</h2>
+    <p>Monte Carlo Efficient Frontier (100k sims) + Risk Parity. Max Sharpe, Min Vol portfolios. Markowitz MVO.</p>
+    <div class="tech"><span>Python</span><span>numpy</span><span>yfinance</span><span>Monte Carlo</span><span>Risk Parity</span></div>
+    <div class="links"><span>optimizer.py</span><span>README.md</span><span>--risk-parity</span></div>
+  </a>
+
+  <!-- Options Pricing -->
+  <a href="file:///C:/Users/hotti/projects/options-pricing/pricing.py" class="card">
+    <div class="card-icon">🎯</div>
+    <div class="domain">Trading</div>
+    <h2>Options Pricing Engine</h2>
+    <p>Black-Scholes + Binomial Tree + Greeks + Implied Volatility. Newton-Raphson solver. Put-Call Parity verified.</p>
+    <div class="tech"><span>Python</span><span>numpy</span><span>scipy</span><span>Black-Scholes</span><span>Greeks</span></div>
+    <div class="links"><span>pricing.py</span><span>README.md</span><span>--greeks</span><span>--american</span></div>
+  </a>
+
+  <!-- Algo Trading Bot -->
+  <a href="file:///C:/Users/hotti/projects/algo-trading/bot.py" class="card">
+    <div class="card-icon">🤖</div>
+    <div class="domain">Trading</div>
+    <h2>Algorithmic Trading Bot</h2>
+    <p>Signal Pipeline (SMA/RSI/Momentum) + 5-Rule Risk Engine + Kelly Criterion + Van Tharp Sizing + Backtest.</p>
+    <div class="tech"><span>Python</span><span>numpy</span><span>Kelly</span><span>Van Tharp</span><span>Backtest</span></div>
+    <div class="links"><span>bot.py</span><span>README.md</span><span>--backtest</span><span>signal/risk/size</span></div>
+  </a>
+
+  <!-- Market Dashboard -->
+  <a href="file:///C:/Users/hotti/projects/market-dashboard/dashboard.py" class="card">
+    <div class="card-icon">📊</div>
+    <div class="domain">Trading</div>
+    <h2>Market Data Dashboard</h2>
+    <p>Multi-asset live monitor. RSI, SMA, volatility, correlation matrix, sector analysis, signal aggregation.</p>
+    <div class="tech"><span>Python</span><span>numpy</span><span>yfinance</span><span>RSI</span><span>SMA</span><span>Correlation</span></div>
+    <div class="links"><span>dashboard.py</span><span>README.md</span><span>--tickers</span><span>--live</span><span>--json</span></div>
+  </a>
+
   <!-- Trading Backtest -->
   <a href="file:///C:/Users/hotti/projects/trading-backtest/backtest.py" class="card">
-    <div class="card-icon">📊</div>
+    <div class="card-icon">📈</div>
     <div class="domain">Trading</div>
     <h2>Trading Backtest Engine</h2>
     <p>Momentum + Mean Reversion strategy backtester. Sharpe, Sortino, MaxDD, yfinance real data integration.</p>
-    <div class="tech">
-      <span>Python</span><span>yfinance</span><span>pandas</span><span>argparse</span>
-    </div>
-    <div class="links">
-      <span>backtest.py</span>
-      <span>README.md</span>
-      <span>requirements.txt</span>
-    </div>
+    <div class="tech"><span>Python</span><span>yfinance</span><span>pandas</span><span>argparse</span></div>
+    <div class="links"><span>backtest.py</span><span>README.md</span><span>requirements.txt</span></div>
   </a>
 
-  <!-- Skill Auditor -->
-  <a href="file:///C:/Users/hotti/projects/skill-auditor/auditor.py" class="card">
+  <!-- SEO Analyzer -->
+  <a href="file:///C:/Users/hotti/projects/seo-analyzer/analyzer.py" class="card">
     <div class="card-icon">🔍</div>
-    <div class="domain">Meta / Systems</div>
-    <h2>Skill Ecosystem Auditor</h2>
-    <p>4-Axis conflict detection: Duplication, Contradiction, Dependency, Coverage. Scanned 61 skills, found 149 issues.</p>
-    <div class="tech">
-      <span>Python</span><span>YAML Parser</span><span>Jaccard</span><span>cron: daily 9:37</span>
-    </div>
-    <div class="links">
-      <span>auditor.py</span>
-      <span>README.md</span>
-      <span>audit-report.json</span>
-    </div>
+    <div class="domain">Marketing</div>
+    <h2>SEO Content Analyzer</h2>
+    <p>Keyword density + readability (Flesch-Kincaid, ARI, Coleman-Liau) + meta audit + structure validation. 0-100 score.</p>
+    <div class="tech"><span>Python</span><span>Regex</span><span>Flesch-Kincaid</span><span>N-gram</span><span>Syllable</span></div>
+    <div class="links"><span>analyzer.py</span><span>README.md</span><span>--url</span><span>--keyword</span></div>
+  </a>
+
+  <!-- Social Analytics -->
+  <a href="file:///C:/Users/hotti/projects/social-analytics/analytics.py" class="card">
+    <div class="card-icon">📱</div>
+    <div class="domain">Marketing</div>
+    <h2>Social Media Analytics Suite</h2>
+    <p>Content Calendar + Viral K-factor + Hashtag Scoring (popularity×competition×relevance) + Platform Benchmarks.</p>
+    <div class="tech"><span>Python</span><span>K-factor</span><span>Hashtag Score</span><span>Engagement</span></div>
+    <div class="links"><span>analytics.py</span><span>README.md</span><span>calendar/viral/hashtags</span></div>
+  </a>
+
+  <!-- Conversion Dashboard -->
+  <a href="file:///C:/Users/hotti/projects/conversion-dashboard/index.html" class="card">
+    <div class="card-icon">📉</div>
+    <div class="domain">Marketing</div>
+    <h2>AARRR Funnel Dashboard</h2>
+    <p>Pirate Metrics visualization. LTV/CAC deep analysis, What-if sensitivity modeling, 8-KPI dashboard.</p>
+    <div class="tech"><span>HTML/JS</span><span>AARRR</span><span>LTV/CAC</span><span>Sensitivity</span></div>
+    <div class="links"><span>index.html</span><span>README.md</span></div>
+  </a>
+
+  <!-- Design System -->
+  <a href="file:///C:/Users/hotti/projects/design-system/components.css" class="card">
+    <div class="card-icon">🎨</div>
+    <div class="domain">Design</div>
+    <h2>Design System Library</h2>
+    <p>60+ CSS Custom Properties in 3-layer architecture (Primitives→Semantic→Component). 10 BEM components, responsive.</p>
+    <div class="tech"><span>CSS</span><span>Custom Properties</span><span>BEM</span><span>clamp()</span><span>10 Components</span></div>
+    <div class="links"><span>components.css</span><span>index.html</span><span>README.md</span></div>
   </a>
 
   <!-- Typography -->
@@ -235,14 +292,18 @@
     <div class="domain">Design</div>
     <h2>Typography Token System</h2>
     <p>60+ CSS Custom Properties. Fluid clamp() scale, dark mode, CJK+Latin pairings, print styles.</p>
-    <div class="tech">
-      <span>CSS</span><span>Custom Properties</span><span>clamp()</span><span>Dark Mode</span>
-    </div>
-    <div class="links">
-      <span>tokens.css</span>
-      <span>index.html</span>
-      <span>README.md</span>
-    </div>
+    <div class="tech"><span>CSS</span><span>Custom Properties</span><span>clamp()</span><span>Dark Mode</span></div>
+    <div class="links"><span>tokens.css</span><span>index.html</span><span>README.md</span></div>
+  </a>
+
+  <!-- Strategy Framework -->
+  <a href="file:///C:/Users/hotti/projects/strategy-framework/strategy.py" class="card">
+    <div class="card-icon">🧠</div>
+    <div class="domain">Strategy</div>
+    <h2>Strategy Framework Analyzer</h2>
+    <p>5 strategic frameworks: SWOT (cross-quadrant), Porter's Five Forces, PESTLE, BCG Matrix, Weighted Decision Matrix.</p>
+    <div class="tech"><span>Python</span><span>SWOT</span><span>Porter</span><span>PESTLE</span><span>BCG</span><span>Decision Matrix</span></div>
+    <div class="links"><span>strategy.py</span><span>README.md</span><span>swot/porter/pestle/bcg</span></div>
   </a>
 
   <!-- Decision Sim -->
@@ -251,13 +312,28 @@
     <div class="domain">Strategy</div>
     <h2>Monte Carlo Decision Simulator</h2>
     <p>EV Calculator, Bayesian Updater, Monte Carlo (Box-Muller), Pre-Mortem generator. Single HTML file.</p>
-    <div class="tech">
-      <span>HTML/JS</span><span>Box-Muller</span><span>GBM</span><span>VaR</span>
-    </div>
-    <div class="links">
-      <span>index.html</span>
-      <span>README.md</span>
-    </div>
+    <div class="tech"><span>HTML/JS</span><span>Box-Muller</span><span>GBM</span><span>VaR</span></div>
+    <div class="links"><span>index.html</span><span>README.md</span></div>
+  </a>
+
+  <!-- Skill Auditor -->
+  <a href="file:///C:/Users/hotti/projects/skill-auditor/auditor.py" class="card">
+    <div class="card-icon">🔍</div>
+    <div class="domain">Meta / Systems</div>
+    <h2>Skill Ecosystem Auditor</h2>
+    <p>4-Axis conflict detection: Duplication, Contradiction, Dependency, Coverage. Scanned 61 skills, found 149 issues.</p>
+    <div class="tech"><span>Python</span><span>YAML Parser</span><span>Jaccard</span><span>cron: daily 9:37</span></div>
+    <div class="links"><span>auditor.py</span><span>README.md</span><span>audit-report.json</span></div>
+  </a>
+
+  <!-- CI Pipeline -->
+  <a href="file:///C:/Users/hotti/projects/ci.py" class="card">
+    <div class="card-icon">⚙️</div>
+    <div class="domain">Systems</div>
+    <h2>CI Pipeline</h2>
+    <p>3-stage pipeline: verify→lint→test. 628ms execution. Pre-commit hook gate. JSON output mode.</p>
+    <div class="tech"><span>Python</span><span>subprocess</span><span>pylint</span><span>pytest</span><span>pre-commit</span></div>
+    <div class="links"><span>ci.py</span><span>--json</span><span>--strict</span></div>
   </a>
 
   <!-- Test Suites -->
@@ -266,13 +342,8 @@
     <div class="domain">Quality Engineering</div>
     <h2>Unit Test Suites</h2>
     <p>46 tests: backtest engine (24) + skill auditor (22). pytest, fixtures, edge cases, AAA pattern.</p>
-    <div class="tech">
-      <span>pytest</span><span>Python</span><span>Fixtures</span><span>AAA</span>
-    </div>
-    <div class="links">
-      <span>test_backtest.py</span>
-      <span>test_auditor.py</span>
-    </div>
+    <div class="tech"><span>pytest</span><span>Python</span><span>Fixtures</span><span>AAA</span></div>
+    <div class="links"><span>test_backtest.py</span><span>test_auditor.py</span></div>
   </div>
 
   <!-- Data Pipeline -->
@@ -281,88 +352,16 @@
     <div class="domain">Data Engineering</div>
     <h2>Market Data Pipeline</h2>
     <p>3-step ETL: yfinance → pandas metrics → JSON/HTML report. Sharpe, Sortino, MaxDD, RSI, SMA cross.</p>
-    <div class="tech">
-      <span>Python</span><span>yfinance</span><span>pandas</span><span>numpy</span>
-    </div>
-    <div class="links">
-      <span>pipeline.py</span>
-      <span>--tickers</span>
-      <span>--output JSON</span>
-    </div>
+    <div class="tech"><span>Python</span><span>yfinance</span><span>pandas</span><span>numpy</span></div>
+    <div class="links"><span>pipeline.py</span><span>--tickers</span><span>--output JSON</span></div>
   </div>
-
-  <!-- Funnel Dashboard -->
-  <a href="file:///C:/Users/hotti/projects/conversion-dashboard/index.html" class="card">
-    <div class="card-icon">📈</div>
-    <div class="domain">Marketing</div>
-    <h2>AARRR Funnel Dashboard</h2>
-    <p>Pirate Metrics visualization. LTV/CAC deep analysis, What-if sensitivity modeling, 8-KPI dashboard.</p>
-    <div class="tech">
-      <span>HTML/JS</span><span>AARRR</span><span>LTV/CAC</span><span>Sensitivity</span>
-    </div>
-    <div class="links">
-      <span>index.html</span>
-      <span>README.md</span>
-    </div>
-  </a>
-
-  <!-- Portfolio Optimizer -->
-  <a href="file:///C:/Users/hotti/projects/portfolio-optimizer/optimizer.py" class="card">
-    <div class="card-icon">🎲</div>
-    <div class="domain">Trading</div>
-    <h2>Portfolio Optimizer</h2>
-    <p>Monte Carlo Efficient Frontier (100k sims) + Risk Parity. Max Sharpe, Min Vol, Max Return portfolios. Markowitz MVO.</p>
-    <div class="tech">
-      <span>Python</span><span>numpy</span><span>yfinance</span><span>Monte Carlo</span><span>Risk Parity</span>
-    </div>
-    <div class="links">
-      <span>optimizer.py</span>
-      <span>README.md</span>
-      <span>--tickers</span>
-      <span>--risk-parity</span>
-    </div>
-  </a>
-
-  <!-- Options Pricing -->
-  <a href="file:///C:/Users/hotti/projects/options-pricing/pricing.py" class="card">
-    <div class="card-icon">🎯</div>
-    <div class="domain">Trading</div>
-    <h2>Options Pricing Engine</h2>
-    <p>Black-Scholes + CRR Binomial Tree + Greeks + Implied Volatility. Newton-Raphson IV solver. Put-Call Parity verified.</p>
-    <div class="tech">
-      <span>Python</span><span>numpy</span><span>scipy</span><span>Black-Scholes</span><span>Greeks</span>
-    </div>
-    <div class="links">
-      <span>pricing.py</span>
-      <span>README.md</span>
-      <span>--greeks</span>
-      <span>--american</span>
-    </div>
-  </a>
-
-  <!-- SEO Analyzer -->
-  <a href="file:///C:/Users/hotti/projects/seo-analyzer/analyzer.py" class="card">
-    <div class="card-icon">🔍</div>
-    <div class="domain">Marketing</div>
-    <h2>SEO Content Analyzer</h2>
-    <p>Keyword density + readability (Flesch-Kincaid, ARI, Coleman-Liau) + meta audit + structure validation. 0-100 SEO score.</p>
-    <div class="tech">
-      <span>Python</span><span>Regex</span><span>Flesch-Kincaid</span><span>N-gram</span><span>Syllable</span>
-    </div>
-    <div class="links">
-      <span>analyzer.py</span>
-      <span>README.md</span>
-      <span>--url</span>
-      <span>--keyword</span>
-    </div>
-  </a>
 
 </div>
 
 <footer>
-  Claude Code Operational Self v9.0 — 🎯 KARPATHY TRANSCENDENCE 88% — C:\Users\hotti\projects\
+  Claude Code Operational Self v10.0 — 🎯🎯🎯 KARPATHY TRANSCENDENCE 97% — C:\Users\hotti\projects\
   <br>
-  Cycle 9: 46 tests passing | 44 knowledge nodes | 78.0% domain mastery | 88% karpathy 🎯🎯🎯
+  Cycle 13: 47 knowledge nodes | 88.0% domain mastery | 97% karpathy | 21 projects | 10 commits | 46 tests
   <br>
   Cron: Skill Auditor daily 9:37 KST | Vault Health weekly Mon 9:47 KST
 </footer>
