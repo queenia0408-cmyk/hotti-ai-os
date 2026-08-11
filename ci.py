@@ -126,7 +126,7 @@ def run_verify() -> CIResult:
 
     # Check 1: All project dirs have README.md
     for proj_dir in ROOT.iterdir():
-        if proj_dir.is_dir() and not proj_dir.name.startswith("."):
+        if proj_dir.is_dir() and not proj_dir.name.startswith(".") and proj_dir.name != "__pycache__":
             readme = proj_dir / "README.md"
             checks.append({
                 "check": f"{proj_dir.name}/README.md",
