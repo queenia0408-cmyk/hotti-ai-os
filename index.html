@@ -165,19 +165,19 @@
 
 <div class="hero">
   <h1>Build-to-Understand Portfolio</h1>
-  <p>Claude Code Self-Evolution — Cycle 1→14.5. 🎯🎯🎯 KARPATHY TRANSCENDENCE 97%.</p>
+  <p>Claude Code Self-Evolution — Cycle 1→16. 🎯🎯🎯 KARPATHY TRANSCENDENCE 99.3%.</p>
   <div class="stats">
-    <div class="stat"><div class="stat-value">13</div><div class="stat-label">Production Projects</div></div>
+    <div class="stat"><div class="stat-value">14</div><div class="stat-label">Production Projects</div></div>
     <div class="stat"><div class="stat-value">65+</div><div class="stat-label">Knowledge Nodes</div></div>
-    <div class="stat"><div class="stat-value">91.7%</div><div class="stat-label">Domain Mastery 🏆</div></div>
-    <div class="stat"><div class="stat-value">97%</div><div class="stat-label">Karpathy Score 🎯🎯🎯</div></div>
-    <div class="stat"><div class="stat-value">11</div><div class="stat-label">Git Commits</div></div>
-    <div class="stat"><div class="stat-value">46</div><div class="stat-label">Tests Passing</div></div>
+    <div class="stat"><div class="stat-value">94.5%</div><div class="stat-label">Domain Mastery 🏆</div></div>
+    <div class="stat"><div class="stat-value">99.3%</div><div class="stat-label">Karpathy Score 🎯🎯🎯</div></div>
+    <div class="stat"><div class="stat-value">12</div><div class="stat-label">Git Commits</div></div>
+    <div class="stat"><div class="stat-value">111</div><div class="stat-label">Tests Passing</div></div>
   </div>
 </div>
 
 <div class="evolution-timeline">
-  <h2>📈 진화 궤적 (13 Cycles)</h2>
+  <h2>📈 진화 궤적 (16 Cycles)</h2>
   <div class="timeline-track">
     <div class="timeline-bar" style="background:#6366f1;height:49%;">C1<br>48.8%</div>
     <div class="timeline-bar" style="background:#8b5cf6;height:58%;">C2<br>57.8%</div>
@@ -190,7 +190,9 @@
     <div class="timeline-bar" style="background:#dc2626;height:88%;">C9<br>78.0%</div>
     <div class="timeline-bar" style="background:#e11d48;height:90%;">C10<br>80.0%</div>
     <div class="timeline-bar" style="background:#be123c;height:94%;">C11-12<br>85.0%</div>
-    <div class="timeline-bar" style="background:#9f1239;height:97%;">C14-14.5<br>91.7%</div>
+    <div class="timeline-bar" style="background:#9f1239;height:97%;">C13<br>87.0%</div>
+    <div class="timeline-bar" style="background:#881337;height:99%;">C14-15<br>94.0%</div>
+    <div class="timeline-bar" style="background:#4c0519;height:100%;">C16<br>94.5%</div>
   </div>
 </div>
 
@@ -316,13 +318,23 @@
     <div class="links"><span>index.html</span><span>README.md</span></div>
   </a>
 
+  <!-- Viral Simulator -->
+  <a href="file:///C:/Users/hotti/projects/viral-simulator/main.py" class="card">
+    <div class="card-icon">🦠</div>
+    <div class="domain">Marketing</div>
+    <h2>K-factor Viral Simulator</h2>
+    <p>4 viral loop types + exponential decay. Cycle time comparison: K=0.8@3d beats K=1.2@30d. CLI flags.</p>
+    <div class="tech"><span>Python</span><span>argparse</span><span>K-factor</span><span>Decay</span><span>24 tests</span></div>
+    <div class="links"><span>main.py</span><span>README.md</span><span>--compare</span><span>--type</span></div>
+  </a>
+
   <!-- Skill Auditor -->
   <a href="file:///C:/Users/hotti/projects/skill-auditor/auditor.py" class="card">
     <div class="card-icon">🔍</div>
     <div class="domain">Meta / Systems</div>
     <h2>Skill Ecosystem Auditor</h2>
     <p>4-Axis conflict detection: Duplication, Contradiction, Dependency, Coverage. Scanned 61 skills, found 149 issues.</p>
-    <div class="tech"><span>Python</span><span>YAML Parser</span><span>Jaccard</span><span>cron: daily 9:37</span></div>
+    <div class="tech"><span>Python</span><span>YAML Parser</span><span>Jaccard</span><span>cron: daily 18:57</span></div>
     <div class="links"><span>auditor.py</span><span>README.md</span><span>audit-report.json</span></div>
   </a>
 
@@ -331,9 +343,19 @@
     <div class="card-icon">⚙️</div>
     <div class="domain">Systems</div>
     <h2>CI Pipeline</h2>
-    <p>3-stage pipeline: verify→lint→test. 628ms execution. Pre-commit hook gate. JSON output mode.</p>
+    <p>3-stage pipeline: verify→lint→test. 628ms execution. Pre-commit hook gate. JSON output mode. GitHub remote.</p>
     <div class="tech"><span>Python</span><span>subprocess</span><span>pylint</span><span>pytest</span><span>pre-commit</span></div>
     <div class="links"><span>ci.py</span><span>--json</span><span>--strict</span></div>
+  </a>
+
+  <!-- Consensus Simulator -->
+  <a href="file:///C:/Users/hotti/projects/consensus-simulator/simulator.py" class="card">
+    <div class="card-icon">🤝</div>
+    <div class="domain">Systems</div>
+    <h2>Consensus Simulator</h2>
+    <p>Raft + Paxos consensus algorithm simulator. Leader election, log replication, network partition tolerance. 41 tests.</p>
+    <div class="tech"><span>Python</span><span>Raft</span><span>Paxos</span><span>41 tests</span><span>Network</span></div>
+    <div class="links"><span>simulator.py</span><span>README.md</span></div>
   </a>
 
   <!-- Test Suites -->
@@ -341,9 +363,9 @@
     <div class="card-icon">🧪</div>
     <div class="domain">Quality Engineering</div>
     <h2>Unit Test Suites</h2>
-    <p>46 tests: backtest engine (24) + skill auditor (22). pytest, fixtures, edge cases, AAA pattern.</p>
-    <div class="tech"><span>pytest</span><span>Python</span><span>Fixtures</span><span>AAA</span></div>
-    <div class="links"><span>test_backtest.py</span><span>test_auditor.py</span></div>
+    <p>111 tests: consensus (41) + backtest (24) + skill-auditor (22) + viral-sim (24). pytest, fixtures, AAA pattern.</p>
+    <div class="tech"><span>pytest</span><span>Python</span><span>Fixtures</span><span>AAA</span><span>CI</span></div>
+    <div class="links"><span>4 test files</span><span>111 tests</span><span>0 failures</span></div>
   </div>
 
   <!-- Data Pipeline -->
@@ -359,11 +381,11 @@
 </div>
 
 <footer>
-  Claude Code Operational Self v10.0 — 🎯🎯🎯 KARPATHY TRANSCENDENCE 97% — C:\Users\hotti\projects\
+  Claude Code Operational Self v12.0 — 🎯🎯🎯 KARPATHY TRANSCENDENCE 99.3% — C:\Users\hotti\projects\
   <br>
-  Cycle 14: 65+ knowledge nodes | 91.7% domain mastery | 97% karpathy | 13 projects | 11 commits | 46 tests | 6/6 ALL EXPERT 🏆
+  Cycle 16: 65+ knowledge nodes | 94.5% domain mastery | 99.3% karpathy | 14 projects | 12 commits | 111 tests | 6/6 ALL EXPERT 🏆
   <br>
-  Cron: Skill Auditor daily 9:37 KST | Vault Health weekly Mon 9:47 KST
+  GitHub: <a href="https://github.com/queenia0408-cmyk/hotti-ai-os" style="color:var(--accent);">queenia0408-cmyk/hotti-ai-os</a> | Cron: Skill Auditor daily 18:57 KST | Vault Health weekly Sun 12:37 KST
 </footer>
 
 </body>

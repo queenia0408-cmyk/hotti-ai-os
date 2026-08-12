@@ -234,13 +234,13 @@ def main():
     elif args.tests_only:
         results.append(run_tests())
     else:
-        # Full pipeline: verify → lint → test (verify first so cache dirs clean)
+        # Full pipeline: clean → verify → lint → test → clean
+        # Clean pytest cache before verify (prevents .pytest_cache false-positive)
+        import shutil
+        for cache_dir in ROOT.glob("**/.pytest_cache"):
+            shutil.rmtree(cache_dir, ignore_errors=True)
         results.append(run_verify())
         results.append(run_lint())
-        # Clean pytest cache before test run
-        for cache_dir in ROOT.glob("**/.pytest_cache"):
-            import shutil
-            shutil.rmtree(cache_dir, ignore_errors=True)
         results.append(run_tests())
         # Clean pytest cache after test run
         for cache_dir in ROOT.glob("**/.pytest_cache"):
