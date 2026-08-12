@@ -1,0 +1,86 @@
+{
+  "timestamp": "2026-08-12T06:26:28.360335",
+  "portfolio_summary": {
+    "tickers": 3,
+    "avg_daily_return_pct": 0.18,
+    "avg_volatility": 30.6,
+    "avg_rsi": 56.5,
+    "buy_signals": 2,
+    "sell_signals": 1,
+    "market_bias": "BULLISH",
+    "diversification_score": 45
+  },
+  "assets": {
+    "AAPL": {
+      "price": 291.83,
+      "daily_change_pct": 1.19,
+      "weekly_change_pct": 0.38,
+      "monthly_change_pct": 3.64,
+      "rsi_14": 57.1,
+      "sma_20": 301.23,
+      "sma_50": 295.71,
+      "volatility_20": 27.7,
+      "high_52w": 323.62,
+      "low_52w": 249.88,
+      "pct_from_52w_high": -9.9,
+      "signal": "BUY",
+      "volume_last": 76329037,
+      "market_cap": 604.5,
+      "sector": "Consumer",
+      "pe_ratio": 39.4
+    },
+    "MSFT": {
+      "price": 234.76,
+      "daily_change_pct": -0.4,
+      "weekly_change_pct": -1.07,
+      "monthly_change_pct": 13.91,
+      "rsi_14": 60.4,
+      "sma_20": 237.41,
+      "sma_50": 243.06,
+      "volatility_20": 23.3,
+      "high_52w": 273.4,
+      "low_52w": 175.44,
+      "pct_from_52w_high": -18.0,
+      "signal": "SELL",
+      "volume_last": 13981052,
+      "market_cap": 1083.3,
+      "sector": "Healthcare",
+      "pe_ratio": 52.3
+    },
+    "GOOGL": {
+      "price": 342.14,
+      "daily_change_pct": -0.24,
+      "weekly_change_pct": -3.69,
+      "monthly_change_pct": 7.77,
+      "rsi_14": 52.1,
+      "sma_20": 341.02,
+      "sma_50": 351.23,
+      "volatility_20": 40.9,
+      "high_52w": 435.61,
+      "low_52w": 259.71,
+      "pct_from_52w_high": -19.1,
+      "signal": "BULLISH",
+      "volume_last": 39840994,
+      "market_cap": 2955.8,
+      "sector": "Finance",
+      "pe_ratio": 70.7
+    }
+  },
+  "correlation": {
+    "AAPL": {
+      "AAPL": 1.0,
+      "MSFT": 0.29,
+      "GOOGL": 0.3
+    },
+    "MSFT": {
+      "AAPL": 0.15,
+      "MSFT": 1.0,
+      "GOOGL": 0.13
+    },
+    "GOOGL": {
+      "AAPL": 0.35,
+      "MSFT": 0.39,
+      "GOOGL": 1.0
+    }
+  }
+}
