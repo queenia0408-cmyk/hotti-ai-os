@@ -97,9 +97,6 @@ class PPO:
         return probs, idx, logp
 
     # -- training ---------------------------------------------------------
-    def compute_gae(self, rewards, values, next_values, dones, gamma=GAMMA, lam=LAMBDA):
-        return compute_gae(rewards, values, next_values, dones, gamma, lam)
-
     def update(self, states, actions, old_logps, advantages, returns, epochs=PPO_EPOCHS, clip_eps=CLIP_EPS):
         """Run multiple PPO epochs over a batch; returns the final losses."""
         states = np.asarray(states, dtype=np.float64)

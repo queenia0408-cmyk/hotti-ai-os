@@ -244,7 +244,6 @@ def main():
         results.append(run_tests())
         # Clean pytest cache after test run
         for cache_dir in ROOT.glob("**/.pytest_cache"):
-            import shutil
             shutil.rmtree(cache_dir, ignore_errors=True)
 
     if not args.quiet:
