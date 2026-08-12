@@ -92,6 +92,15 @@ def parse_frontmatter(content: str) -> Dict[str, any]:
             key = key.strip()
             value = value.strip().strip('"').strip("'")
 
+            # Handle inline YAML list: [item1, item2, item3]
+            if value.startswith("[") and value.endswith("]"):
+                inner = value[1:-1]
+                items = [v.strip().strip('"').strip("'") for v in inner.split(",")]
+                items = [i for i in items if i]  # Remove empty strings
+                result[key] = items
+                current_key = key
+                continue
+
             if value == "":
                 current_key = key
                 list_values = []
@@ -119,7 +128,7 @@ def load_skills(skills_dir: str) -> List[SkillMeta]:
         print(f"❌ Skills directory not found: {skills_dir}")
         return skills
 
-    for root, dirs, files in os.walk(skills_dir):
+    for root, dirs, files in os.walk(skills_dir, followlinks=True):
         for f in files:
             if f == "SKILL.md":
                 path = os.path.join(root, f)
@@ -182,9 +191,14 @@ def check_duplicates(skills: List[SkillMeta]) -> List[Conflict]:
                     recommendation=f"Consider merging '{a.name}' and '{b.name}' into a single skill"
                 ))
 
-            # Check tool overlap
-            tools_a = set(a.tools)
-            tools_b = set(b.tools)
+            # Check tool overlap (exclude common tools)
+            COMMON_TOOLS = {
+                "Read", "Write", "Edit", "Glob", "Grep", "Bash", "PowerShell",
+                "WebSearch", "WebFetch", "Task", "TaskCreate", "TaskUpdate",
+                "Skill", "Agent", "AskUserQuestion",
+            }
+            tools_a = set(a.tools) - COMMON_TOOLS
+            tools_b = set(b.tools) - COMMON_TOOLS
             tool_overlap = tools_a & tools_b
             if len(tool_overlap) >= 3 and a.name != b.name:
                 conflicts.append(Conflict(

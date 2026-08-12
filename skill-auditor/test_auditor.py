@@ -111,8 +111,8 @@ class TestCheckDuplicates:
 
     def test_tool_overlap_detected(self):
         skills = [
-            SkillMeta(path="", name="skill-x", description="Does X", tools=["Read", "Write", "Edit", "Glob"]),
-            SkillMeta(path="", name="skill-y", description="Does Y", tools=["Read", "Write", "Edit"]),
+            SkillMeta(path="", name="skill-x", description="Does X", tools=["mcp__obsidian", "mcp__github", "PushNotification", "Mermaid"]),
+            SkillMeta(path="", name="skill-y", description="Does Y", tools=["mcp__obsidian", "mcp__github", "PushNotification"]),
         ]
         conflicts = check_duplicates(skills)
         assert any(c.severity == "warning" and c.category == "duplicate" for c in conflicts)
